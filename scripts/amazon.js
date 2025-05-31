@@ -1,4 +1,5 @@
-import{cart} from '../data/cart.js'
+import{cart} from '../data/cart.js';
+import{products} from '../data/products.js';
 let productsHTML = '';
 products.forEach((product) => {
  //accumulator Pattern i.e each time we loop through an array we are adding to the result i.e productsHTML
