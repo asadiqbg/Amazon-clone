@@ -7,9 +7,8 @@ import dayjs from 'https://unpkg.com/supersimpledev@8.5.0/dayjs/esm/index.js'; /
 import {deliveryOptions,getDeliveryOption} from '../../data/deliveryOptions.js';
 import { renderPaymentSummary } from './paymentSummary.js';
 
-const today = dayjs(); //dayjs external library
-const deliveryDate = today.add(7, 'days');
-console.log(deliveryDate.format('dddd,MMMM,D'));
+// This function renders the order summary section of the checkout page
+// It iterates through the cart items, retrieves product and delivery option details,
 
 export function renderOrderSummary(){
   let cartSummaryHTML = ''
