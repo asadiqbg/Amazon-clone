@@ -1,10 +1,10 @@
 import {cart, removeFromCart, updateDeliveryOption} from '../../data/cart.js'; //Named export
-import {products} from '../../data/products.js';
+import {products, getProduct} from '../../data/products.js';
 import {formatCurrency} from '../utils/money.js'
 
 
 import dayjs from 'https://unpkg.com/supersimpledev@8.5.0/dayjs/esm/index.js'; //ESM version , syntax is called default export .
-import {deliveryOptions} from '../../data/deliveryOptions.js';
+import {deliveryOptions,getDeliveryOption} from '../../data/deliveryOptions.js';
 
 
 const today = dayjs(); //dayjs external library
@@ -16,12 +16,11 @@ export function renderOrderSummary(){
   cart.forEach((cartItem)=>{
     const productId = cartItem.productId;
 
-    let matchingProduct;
-    products.forEach((product) => {
-      if(product.id === productId){
-        matchingProduct = product;
-      }
-    });
+    const deliveryOptionId = cartItem.deliveryOptionId;
+    const deliveryOption = getDeliveryOption(deliveryOptionId);
+
+    const matchingProduct = getProduct(productId);
+    
     
     cartSummaryHTML +=
     `
@@ -115,8 +114,9 @@ export function renderOrderSummary(){
   .forEach((element)=>{
     element.addEventListener('click',()=>{
       const {productId , deliveryOptionId} = element.dataset;
-      updateDeliveryOption(productId,deliveryOptionId);});
+      updateDeliveryOption(productId,deliveryOptionId);
       renderOrderSummary();
-  });
+    });
+  })
 }
     
