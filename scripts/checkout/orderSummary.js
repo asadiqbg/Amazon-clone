@@ -1,10 +1,10 @@
-import {cart, removeFromCart, updateDeliveryOption} from '../../data/cart.js'; //Named export
+import {cart, removeFromCart,} from '../../data/cart.js'; //Named export
 import {products, getProduct} from '../../data/products.js';
 import {formatCurrency} from '../utils/money.js'
 
 
 import dayjs from 'https://unpkg.com/supersimpledev@8.5.0/dayjs/esm/index.js'; //ESM version , syntax is called default export .
-import {deliveryOptions,getDeliveryOption} from '../../data/deliveryOptions.js';
+import {deliveryOptions,getDeliveryOption ,updateDeliveryOption} from '../../data/deliveryOptions.js';
 import { renderPaymentSummary } from './paymentSummary.js';
 
 // This function renders the order summary section of the checkout page
@@ -23,7 +23,8 @@ export function renderOrderSummary(){
     
     cartSummaryHTML +=
     `
-    <div class="cart-item-container js-cart-item-container-${matchingProduct.id}">
+    <div class="cart-item-container 
+        js-cart-item-container js-cart-item-container-${matchingProduct.id}">
             <div class="delivery-date">
               Delivery date: Tuesday, June 21
             </div>
